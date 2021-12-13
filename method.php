@@ -6,7 +6,7 @@ class Mahasiswa
    public  function get_mhss()
    {
       global $mysqli;
-      $query="SELECT * FROM tbl_mahasiswa";
+      $query="SELECT * FROM mahasiswa";
       $data=array();
       $result=$mysqli->query($query);
       while($row=mysqli_fetch_object($result))
@@ -25,7 +25,7 @@ class Mahasiswa
    public function get_mhs($nim=0)
    {
     global $mysqli;
-    $query="SELECT * FROM tbl_mahasiswa";
+    $query="SELECT * FROM mahasiswa";
     if($nim != 0)
     {
         $query.=" WHERE nim=".$nim." LIMIT 1";
@@ -61,7 +61,7 @@ class Mahasiswa
         $hitung = count(array_intersect_key($_POST, $arrcheckpost));
         if($hitung == count($arrcheckpost)){
         
-            $result = mysqli_query($mysqli, "INSERT INTO tbl_mahasiswa SET
+            $result = mysqli_query($mysqli, "INSERT INTO mahasiswa SET
             nama = '$_POST[nama]',
             nim = '$_POST[nim]',
             email = '$_POST[email]',
@@ -102,7 +102,7 @@ class Mahasiswa
          $hitung = count(array_intersect_key($_POST, $arrcheckpost));
          if($hitung == count($arrcheckpost)){
           
-              $result = mysqli_query($mysqli, "UPDATE tbl_mahasiswa SET
+              $result = mysqli_query($mysqli, "UPDATE mahasiswa SET
                 nama = '$_POST[nama]',
                 nim = '$_POST[nim]',
                 email = '$_POST[email]',
@@ -140,7 +140,7 @@ class Mahasiswa
    function delete_mhs($id)
    {
       global $mysqli;
-      $query="DELETE FROM tbl_mahasiswa WHERE id=".$id;
+      $query="DELETE FROM mahasiswa WHERE id=".$id;
       if(mysqli_query($mysqli, $query))
       {
          $response=array(
